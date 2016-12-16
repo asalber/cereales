@@ -1,0 +1,124 @@
+\documentclass[a4paper,titlepage]{article}
+%===============================================
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[top=3cm, bottom=3cm, left=2.54cm, right=2.54cm, marginparwidth=2mm]{geometry}
+
+% COLORS
+\usepackage[table]{xcolor}
+\definecolor{color1}{RGB}{5,161,230}
+\definecolor{color2}{RGB}{238,50,36}
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+\definecolor{blueceu}{RGB}{5,161,230} % Blue color of CEU logo
+\definecolor{greenceu}{RGB}{185,209,16} % Green color of CEU logo
+\definecolor{redceu}{RGB}{238,50,36} % Red color of CEU logo
+\definecolor{grayceu}{RGB}{111,107,83} % Gray color of CEU logo
+\definecolor{coral}{rgb}{1,0.5,0.31} % Orange color for graphics
+\definecolor{royalblue1}{rgb}{0.28,0.46,1} % Blue color for graphics
+\definecolor{mygreen}{rgb}{0,0.8,0} % Green color for graphics
+\definecolor{chaptergrey}{RGB}{5,161,230} % Blue color of CEU logo
+
+% MATH
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[inline]{enumitem}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\textsc{\textcolor{blueceu}{Universidad CEU San Pablo}}}
+\rhead{\textsl{\textsf{\textcolor{blueceu}{Departamento de Matemática Aplicada y Estadística}}}}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{booktabs}
+
+\begin{document}
+\sloppy
+
+\bigskip
+\section*{\color{blueceu}Caso práctico: Análisis nutricional de cereales}
+
+\subsection*{\color{blueceu}Enunciado del caso}
+Se ha realizado un estudio nutricional sobre distintas marcas de cereales vendidas Estados Unidos con el objetivo de comparar varios parámetros nutricionales.
+
+En el estudio también se recogió la valoración nutricional que hacían los consumidores de estos cereales, tanto en consumidores adultos como en jóvenes, para comparar las preferencias de ambos grupos de edad.
+
+Finalmente, también se midió la estantería en la que estaban ubicados los cereales en el supermercado para ver si había algún tipo de relación entre la ubicación y las características nutricionales. Debe tenerse en cuenta que una estrategia de marketing habitual es colocar en las estanterías centrales los productos que más se desea vender.
+
+\subsection*{\color{blueceu}Variables del Estudio}
+\begin{center}
+\begin{tabular}{|l|p{7cm}|l|}
+	\hline
+	Nombre Variable    & Descripción                                                        & Codificación o Unidades    \\ \hline\hline
+	nombre             & Marca comercial de los cereales                                    &  \\
+	fabricante         & Fabricante del producto                                            & factor                     \\
+	estanteria         & Nivel de la estantería en la que están colocados en el supermercado & factor (Bajo, Medio, Alto) \\
+	calorias           & Calorías por ración                                                & Calorías                   \\
+	proteinas          & Gramos de proteínas por ración                                     & Gramos                     \\
+	grasa              & Gramos de grasa por ración                                         & Gramos                     \\
+	sodio              & Miligramos de sodio por ración                                     & Miligramos                 \\
+	fibra              & Gramos de fibra por ración                                         & Gramos                     \\
+	carbohidratos      & Gramos de carbohidratos complejos por ración                       & Gramos                     \\
+	azucar             & Gramos de azúcar por ración                                        & Gramos                     \\
+	potasio            & Miligramos de potasio por ración                                   & Miligramos                 \\
+	vitaminas          & Porcentaje de vitaminas y minerales sobre los recomendados         & Porcentaje                 \\
+	peso               & Peso en gramos de una ración                                       & Gramos                     \\
+	valoracion.adultos & Valoración según clientes adultos                                  & Puntuación 1--100          \\
+	valoracion.jovenes & Valoración según clientes jóvenes                                  & Puntuación 1--100          \\ \hline
+\end{tabular}
+\end{center}
+
+
+\subsection*{\color{blueceu}Datos de la muestra}
+Los datos corresponden a 76 marcas cereales vendidas en una cadena de supermecados de Estados Unidos.
+Para generar el conjunto de datos deben seguirse los siguientes pasos:
+\begin{enumerate}
+	\item Abrir la consola de RKWard y ejecutar las siguientes ordenes:
+	\begin{verbatim}
+		library(devtools)
+		install_github('asalber/cereales')
+	\end{verbatim}
+	\item Cargar el paquete \textsf{cereales} seleccionando el menú \texttt{Settings > Manage R packages}. En el cuadro de diálogo que aparece hay que seleccionar el paquete \textsf{cereales}, hacer clic en el botón \textsf{Load} y luego en el botón \textbf{OK}.
+	\item Seleccionar el menú \texttt{Teaching > Trabajo > Generar datos}. En el cuadro de diálogo que aparece hay que introducir el DNI (sin la letra) y hacer clic en el botón \textsf{Enviar}.
+\end{enumerate}
+Con esto se genera un nuevo conjunto de datos en el entorno de trabajo (Workspace) con los datos del estudio.
+
+\subsection*{\color{blueceu}Cuestiones}
+\begin{enumerate}[leftmargin=*]
+\item Estimar mediante un intervalo de confianza el número medio de calorías de todos los cereales.
+\item Estimar mediante un intervalo de confianza la cantidad media de azúcar que tienen los cereales según la estantería donde están colocados.
+\item Estimar mediante un intervalo de confianza del 99\% de confianza la valoración media que hacen los adultos de los cereales según el fabricante.
+\item Estimar mediante un intervalo de confianza del 10\% de significación la proporción de cereales que tiene menos de 1 gramo de grasa por ración.
+\item Si se considera que una valoración por encima de 50 es una buena valoración, estimar mediante un intervalo de confianza el porcentaje de cereales que tienen una valoración buena en los adultos según la estantería donde están colocados.
+\item Estimar mediante un intervalo de confianza del 8\% de significación la proporción de cereales del fabricante Ralston Purina que tienen más de 1 gramo de grasa.
+\item Calcular el intervalo de confianza para la diferencia entre las medias del contenido de fibra entre los cereales de la estantería de abajo y los de la estantería de arriba. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza con un 10\% de significación para la diferencia entre la valoración media de jóvenes y la de adultos. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza con un 99\% de confianza para la diferencia entre la valoración media de jóvenes y la de adultos según la estantería donde estén colocados los cereales. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza para el cociente de varianzas entre el contenido de grasas de los cereales del fabricante General Mills y el fabricante Kelloggs. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza para la diferencia de medias entre el contenido de grasas de los cereales del fabricante General Mills y el fabricante Kelloggs. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza para el cociente de varianzas entre el contenido de carbohidratos de los cereales del fabricante Kelloggs y el fabricante Post. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza del 10\% de significación para la diferencia de medias entre el contenido de carbohidratos de los cereales del fabricante Kellogs y el fabricante Post. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza del 98\% de confianza para la diferencia de medias entre las calorías de los cereales del fabricante Kelloggs y el fabricante Nabisco. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza del 10\% de significación para la diferencia de medias entre el contenido de fibra de los cereales del fabricante Nabisco y el fabricante General Mills. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza para la diferencia de medias entre el contenido de fibra de los cereales del fabricante Nabisco y el fabricante General Mills. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza para la diferencia de medias entre las calorías de los cereales de la estantería central y los de la estantería de abajo. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza la diferencia entre la cantidad media de azúcar de los cereales de la estantería del medio y los de la estantería de abajo. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza la diferencia entre la cantidad media de azúcar de los cereales de la estantería del medio y los de la estantería de arriba. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza del 99\% de confianza para la diferencia de medias entre el contenido de azúcar de los cereales de a estantería del medio y los cereales de las otras dos estanterías. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza para la diferencia entre la proporción de cereales con más de 200 mg de sodio de los cereales del fabricante Kelloggs y los del fabricante Ralston Purina. ¿Existen diferencias significativas?
+\item Calcular el intervalo de confianza para la diferencia entre la proporción de cereales con más de 1 gramo de grasa de los cereales del fabricante Kelloggs y los del fabricante Post. ¿Existen diferencias significativas?
+\item Si se considera que una valoración por encima de 50 es una buena valoración, calcular el intervalo de confianza para la diferencia entre la proporción de cereales con una buena valoración en los jóvenes de los cereales de la estantería del medio y los de las estantería de arriba. ¿Existen diferencias significativas?
+\item Si se considera que una valoración por encima de 50 es una buena valoración, calcular el intervalo de confianza para la diferencia entre la proporción de cereales con una buena valoración en los adultos de los cereales del fabricante Nabisco y los del fabricante Post. ¿Existen diferencias significativas?
+\item Si se considera que una valoración por encima de 50 es una buena valoración, calcular el intervalo de confianza para la diferencia entre la proporción de cereales con una buena valoración de adultos de los cereales de la estantería del medio y los de las otras dos estanterías. ¿Existen diferencias significativas?
+\item Calcular el tamaño muestral necesario para estimar el potasio medio de los cereales con una confianza del 95\% y un margen de error de $\pm 5$ mg.
+\item Si se considera que una valoración por encima de 50 es una buena valoración, calcular el tamaño muestral necesario para estimar el porcentaje de cereales con una valoración buena de los adultos con una significación del 10\% y un error de $\pm 5$\%.
+\item Calcular el tamaño muestral necesario para estimar la valoración media de los jóvenes para los cereales del fabricante Kelloggs con una confianza del 99\% y una imprecisión de $\pm 2$ puntos.
+\item Calcular el tamaño muestral necesario para estimar las calorías medias de los cereales de la estantería de arriba con un 98\% de confianza y un error de $\pm 4$ calorías.
+\item Calcular el tamaño muestral necesario para estimar la proporción de cereales con un contenido de grasa superior a 1 gramo de la estantería del medio con un 5\% de significación y una imprecisión de $\pm 0.06$.
+\end{enumerate}
+
+\subsection*{\color{blueceu}Entrega y Examen del Trabajo}
+Las respuestas deben darse en un cuestionario en el campus virtual. La fecha límite de entrega es el \textbf{domingo 8 de enero a las 23:59}.
+
+La defensa del trabajo se realizará mediante un examen en el que se tendrá que contestar a algunas de las preguntas del trabajo. El examen se realizará el mismo día del examen de la convocatoria ordinaria y para poder hacerlo será necesario haber entregado el trabajo antes.
+\end{document}
