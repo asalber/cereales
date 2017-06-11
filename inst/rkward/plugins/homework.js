@@ -8,7 +8,7 @@ function preprocess(){
 function calculate () {
 	dni = getString("dni");
 	echo('data(datos.cereales, package="cereales")\n');
-	echo('set.seed(' + dni + ')\n');
+	echo('set.seed(' + dni + 1 + ')\n');
 	echo('datos.cereales$calorias <- datos.cereales$calorias + round(runif(length(datos.cereales$calorias),-2,2))\n');
 	echo('datos.cereales$proteinas <- datos.cereales$proteinas + round(runif(length(datos.cereales$proteinas),0,1),1)\n');
 	echo('datos.cereales$grasa <- datos.cereales$grasa + round(runif(length(datos.cereales$grasa),0,1),1)\n');
