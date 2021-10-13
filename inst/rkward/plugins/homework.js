@@ -9,22 +9,22 @@ function calculate () {
 	dni = getString("dni");
 	echo('data(cereales, package="cereales")\n');
 	echo('set.seed(' + dni + 1 + ')\n');
-	echo('datos.cereales$calorias <- datos.cereales$calorias + round(runif(length(datos.cereales$calorias),-2,2))\n');
-	echo('datos.cereales$proteinas <- datos.cereales$proteinas + round(runif(length(datos.cereales$proteinas),0,1),1)\n');
-	echo('datos.cereales$grasa <- datos.cereales$grasa + round(runif(length(datos.cereales$grasa),0,1),1)\n');
-	echo('datos.cereales$sodio <- datos.cereales$sodio + round(runif(length(datos.cereales$sodio),0,5),1)\n');
-	echo('datos.cereales$fibra <- datos.cereales$fibra + round(runif(length(datos.cereales$fibra),0,1),1)\n');
-	echo('datos.cereales$carbohidratos <- datos.cereales$carbohidratos + round(runif(length(datos.cereales$carbohidratos),0,1),1)\n');
-	echo('datos.cereales$azucar <- datos.cereales$azucar + round(runif(length(datos.cereales$azucar),0,1),1)\n');
-	echo('datos.cereales$potasio <- datos.cereales$potasio + round(runif(length(datos.cereales$potasio),0,5),1)\n');
-	echo('datos.cereales$valoracion.adultos <- datos.cereales$valoracion.adultos + round(rnorm(length(datos.cereales$valoracion.adultos)),2)\n');
-	echo('datos.cereales$valoracion.jovenes <- datos.cereales$valoracion.jovenes + round(rnorm(length(datos.cereales$valoracion.jovenes)),2)\n');
-	echo('.GlobalEnv$datos.cereales.' + dni + '<- datos.cereales\n');
-	echo('rm(datos.cereales,envir=.GlobalEnv)\n');
+	echo('cereales$calorias <- cereales$calorias + round(runif(length(cereales$calorias),-2,2))\n');
+	echo('cereales$proteinas <- cereales$proteinas + round(runif(length(cereales$proteinas),0,1),1)\n');
+	echo('cereales$grasa <- cereales$grasa + round(runif(length(cereales$grasa),0,1),1)\n');
+	echo('cereales$sodio <- cereales$sodio + round(runif(length(cereales$sodio),0,5),1)\n');
+	echo('cereales$fibra <- cereales$fibra + round(runif(length(cereales$fibra),0,1),1)\n');
+	echo('cereales$carbohidratos <- cereales$carbohidratos + round(runif(length(cereales$carbohidratos),0,1),1)\n');
+	echo('cereales$azucar <- cereales$azucar + round(runif(length(cereales$azucar),0,1),1)\n');
+	echo('cereales$potasio <- cereales$potasio + round(runif(length(cereales$potasio),0,5),1)\n');
+	echo('cereales$valoracion.adultos <- cereales$valoracion.adultos + round(rnorm(length(cereales$valoracion.adultos)),2)\n');
+	echo('cereales$valoracion.jovenes <- cereales$valoracion.jovenes + round(rnorm(length(cereales$valoracion.jovenes)),2)\n');
+	echo('.GlobalEnv$cereales.' + dni + '<- cereales\n');
+	echo('rm(cereales,envir=.GlobalEnv)\n');
 }
 
 function printout () {
-	echo('rk.header ("Datos del trabajo de estad&iacute;stica", parameters=list("Nombre del conjunto de datos" = "datos.cereales.' + dni + '"))\n');
+	echo('rk.header ("Datos del trabajo de estad&iacute;stica", parameters=list("Nombre del conjunto de datos" = "cereales.' + dni + '"))\n');
 	echo('rk.print("Se ha generado un nuevo conjunto de datos en el espacio de trabajo.")\n');
 }
 
