@@ -2,7 +2,7 @@
 var dni;
 
 function preprocess(){
-	echo('require(cereales)\n');
+	echo('library(cereales)\n');
 }
 
 function calculate () {

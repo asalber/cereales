@@ -6,7 +6,7 @@ Version: 1.0
 Date: 2014-10-01
 Author: Alfredo Sánchez Alberca <asalber@ceu.es>
 Maintainer: Alfredo Sánchez Alberca <asalber@ceu.es>
-Depends: rkTeaching, rkward (>= 0.6.1)
+Depends: rkTeaching
 Enhances: rkward
 Description: Conjunto de datos del análisis nutricional de varias marcas de cereales vendidos en Estados Unidos. 
 License: GPL (>= 3)
